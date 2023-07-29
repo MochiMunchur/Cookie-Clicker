@@ -1,0 +1,214 @@
+
+/* setting up navbar menu and hamburger */
+.navbar {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 8%;
+    padding-top: 8px;
+    padding-bottom: 7px;
+    z-index: 1000;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: 1.5em;
+    transition: .3s;
+    justify-content: space-between;
+
+    /* add photo for navbar */
+    background-image: url('../img/banner.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.loginout-button {
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;   
+}
+
+.loginout-button:hover {
+    color: rgb(82, 229, 240) !important;
+}
+.menu-list {
+    display: flex;
+    list-style-type: none;
+    opacity: 70%;
+    justify-content: center;
+}
+
+.menu-list li{
+    font-size: 30px; /* default font size */
+  }
+  
+.menu-list:hover {
+    opacity: 90%;
+}
+
+/* using relative here to let a:hover::after for absolute */
+/* .menu-list li {
+    position: relative;
+} */
+
+.menu-list a {
+    font-weight: 600;
+    padding: 10px 20px;
+    color: #ffffff;
+}
+
+.menu-list a:hover {
+    transition: ease .5s;
+    /* background: lightgoldenrodyellow; */
+    color: rgb(238, 255, 0);
+    text-shadow: 0px 0px 10px hsl(288, 93%, 58%);
+}
+
+.menu-list a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: rgba(235, 214, 27, 0.753);
+    bottom: -3px;
+    left: 0;
+    transition: ease 1s;
+    box-shadow: 0px 0px 10px rgba(223, 61, 223, 0.473);
+}
+
+.menu-list a:hover:after {
+    width: 100%;
+    transition: ease .40s;
+
+}
+
+/* hambuger menu*/
+/*menu-list btn styling*/
+.menu-btn {
+    position: absolute;
+    margin-right: 25px;
+    right: 0;
+    display: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    background: scroll;
+    border: 2px outset rgb(184, 168, 165);
+    border-radius: 20px;
+}
+
+.menu-btn:hover {
+    transform: rotate(0.5turn) translate(10%, -5%);
+}
+
+.play-button {
+  animation: pulse 2s infinite;
+}
+
+.playButton:hover {
+    border: 2px solid #f70d0d;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: #000000;
+    color: rgb(255, 0, 255);
+    text-shadow: 0px 0px 6px hsl(180, 82%, 67%);
+    
+    font-size: 1.2em;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.75);
+  }
+}
+@media only screen and (min-width: 948px) {
+    .menu-btn{
+        display: none !important;
+    }
+    .menu-list a {
+        padding-right: 5px;
+    }
+
+}
+
+@media (min-width: 947px) and (max-width: 1200px) {
+    .play-button  {
+        margin-right: 10px !important;
+      }
+    
+}
+@media (max-width: 947px) {
+    .menu-btn {
+        display: block;
+        z-index: 999;
+    }
+
+    .menu-btn.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-btn.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-btn.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .navbar {
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+    .navbar .menu-list {
+        position: absolute;
+        flex-direction: column;
+        padding: 40px 0 40px 100px;
+        margin-top: 90px;
+        opacity: 100%;
+        text-align: left;
+        width: 100%;
+        right: -100%;
+        top: 0;
+        gap: 0;
+        backdrop-filter: blur(10px);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: all .40s ease-in-out;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    }
+
+    .navbar .menu-list a {
+        display: block;
+    }
+
+    .navbar .menu-list a:hover {
+        background: rgb(255, 224, 191);
+        border-radius: 50px;
+    }
+
+    .menu-list.active {
+        right: 0;
+    }
+
+    .menu-list li {
+        display: block;
+    }
+
+    .menu-list a:hover {
+        background-color: black;
+    }
+
+    .menu-list li a {
+        display: inline-block;
+        margin: 20px 0;
+        font-size: 25px;
+    }
+
+}
+
